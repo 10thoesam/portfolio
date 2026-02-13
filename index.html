@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0b'/><text x='16' y='22' font-family='monospace' font-weight='bold' font-size='16' fill='%235ad8b5' text-anchor='middle'>TS</text></svg>">
     <title>Tenzin Thoesam Shrestha</title>
     <meta name="description"
         content="Tenzin Thoesam Shrestha — CS grad student at Northeastern, building things that matter.">
@@ -663,6 +664,8 @@
             transition: all 0.35s var(--ease);
             position: relative;
             overflow: hidden;
+            background: transparent;
+            cursor: pointer;
         }
 
         .contact-btn::before {
@@ -1025,14 +1028,14 @@
             <h2 class="contact-heading">Let's Connect</h2>
             <p class="contact-text">I'm currently looking for software engineering and ML internship opportunities.
                 Whether you have a question, an opportunity, or just want to chat — my inbox is open.</p>
-            <a href="mailto:thoesamm@gmail.com" class="contact-btn">
+            <button onclick="copyEmail(this)" class="contact-btn">
                 Say hello
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                 </svg>
-            </a>
+            </button>
             <div class="contact-socials">
                 <a href="https://github.com/10thoesam" target="_blank" aria-label="GitHub"><svg width="22" height="22"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1046,8 +1049,9 @@
                         <rect x="2" y="9" width="4" height="12"></rect>
                         <circle cx="4" cy="4" r="2"></circle>
                     </svg></a>
-                <a href="mailto:thoesamm@gmail.com" aria-label="Email"><svg width="22" height="22" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="1.5">
+                <a href="javascript:void(0)" onclick="copyEmail(document.querySelector('.contact-btn'))"
+                    aria-label="Email"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                         <polyline points="22,6 12,13 2,6"></polyline>
                     </svg></a>
@@ -1086,6 +1090,20 @@
                 if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
+
+        function copyEmail(btn) {
+            navigator.clipboard.writeText('thoesamm@gmail.com').then(() => {
+                const original = btn.innerHTML;
+                btn.innerHTML = 'Copied! ✓';
+                btn.style.borderColor = '#5ad8b5';
+                btn.style.background = 'rgba(90, 216, 181, 0.06)';
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.style.borderColor = '';
+                    btn.style.background = '';
+                }, 2000);
+            });
+        }
     </script>
 </body>
 
