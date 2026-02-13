@@ -8,12 +8,49 @@
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0b'/><text x='16' y='22' font-family='monospace' font-weight='bold' font-size='16' fill='%235ad8b5' text-anchor='middle'>TS</text></svg>">
     <title>Tenzin Thoesam Shrestha</title>
     <meta name="description"
-        content="Tenzin Thoesam Shrestha — CS grad student at Northeastern, building things that matter.">
+        content="Tenzin Thoesam Shrestha — MS CS student at Northeastern building full-stack and ML projects, currently seeking SWE internship opportunities.">
+    <link rel="canonical" href="https://tenzintshrestha.dev/">
+    <meta name="robots" content="index,follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tenzin Thoesam Shrestha | Software Engineer">
+    <meta property="og:description"
+        content="MS CS @ Northeastern building full-stack and ML products. Seeking Summer/Fall 2026 SWE internship opportunities.">
+    <meta property="og:url" content="https://tenzintshrestha.dev/">
+    <meta property="og:image" content="https://tenzintshrestha.dev/favicon.ico">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tenzin Thoesam Shrestha | Software Engineer">
+    <meta name="twitter:description"
+        content="MS CS @ Northeastern building full-stack and ML products. Seeking Summer/Fall 2026 SWE internship opportunities.">
+    <meta name="twitter:image" content="https://tenzintshrestha.dev/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Tenzin Thoesam Shrestha",
+            "url": "https://tenzintshrestha.dev/",
+            "email": "mailto:thoesamm@gmail.com",
+            "jobTitle": "Software Engineer",
+            "alumniOf": [
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Northeastern University"
+                },
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "San Francisco State University"
+                }
+            ],
+            "sameAs": [
+                "https://github.com/10thoesam",
+                "https://linkedin.com/in/thoesam"
+            ]
+        }
+    </script>
     <style>
         :root {
             --bg: #0a0a0b;
@@ -42,6 +79,33 @@
             scroll-behavior: smooth;
             scrollbar-width: thin;
             scrollbar-color: var(--border) var(--bg);
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 0.75rem;
+            left: 0.75rem;
+            z-index: 10001;
+            background: var(--bg-elevated);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            padding: 0.55rem 0.75rem;
+            text-decoration: none;
+            transform: translateY(-140%);
+            transition: transform 0.2s ease;
+        }
+
+        .skip-link:focus-visible {
+            transform: translateY(0);
         }
 
         body {
@@ -136,6 +200,14 @@
             width: 100%;
         }
 
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a.active::before {
+            width: 100%;
+        }
+
         .nav-number {
             color: var(--accent);
             margin-right: 0.3rem;
@@ -225,6 +297,13 @@
             border-bottom-color: var(--accent);
         }
 
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+        }
+
         /* ===== BUTTONS ===== */
         .hero-cta {
             display: inline-flex;
@@ -272,6 +351,21 @@
 
         .hero-cta:hover svg {
             transform: translateY(2px);
+        }
+
+        .hero-cta-secondary {
+            color: var(--text-muted);
+            border-color: var(--border-hover);
+        }
+
+        .hero-cta-secondary:hover {
+            color: var(--text);
+            border-color: var(--accent);
+            box-shadow: none;
+        }
+
+        .hero-cta-secondary::before {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
         }
 
         /* Orb */
@@ -470,6 +564,22 @@
 
         .project-card:hover::before {
             opacity: 0.7;
+        }
+
+        .project-thumb {
+            height: 150px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            background: var(--bg-elevated);
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .project-top {
@@ -701,9 +811,42 @@
             transition: all 0.25s ease;
         }
 
-        .contact-socials a:hover {
+        .contact-socials button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .contact-socials a:hover,
+        .contact-socials button:hover {
             color: var(--accent);
             transform: translateY(-1px);
+        }
+
+        .copy-toast {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 10002;
+            background: var(--bg-elevated);
+            color: var(--text);
+            border: 1px solid var(--border-hover);
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            padding: 0.55rem 0.8rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* ===== FOOTER ===== */
@@ -799,15 +942,43 @@
             .scroll-indicator {
                 display: none;
             }
+
+            .hero-actions {
+                gap: 0.75rem;
+            }
+
+            .hero-cta {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
         }
     </style>
 </head>
 
-<body>
+<body id="top">
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- NAV -->
     <nav id="nav">
-        <a href="#" class="nav-logo">tenzintshrestha.dev</a>
+        <a href="#top" class="nav-logo">tenzintshrestha.dev</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about"><span class="nav-number">01.</span>About</a></li>
             <li><a href="#projects"><span class="nav-number">02.</span>Projects</a></li>
@@ -815,252 +986,287 @@
             <li><a href="#education"><span class="nav-number">04.</span>Education</a></li>
             <li><a href="#contact"><span class="nav-number">05.</span>Contact</a></li>
         </ul>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-controls="navLinks"
+            aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-orb"></div>
-        <p class="hero-greeting">hey, i'm</p>
-        <h1 class="hero-name">Tenzin Thoesam Shrestha.</h1>
-        <h2 class="hero-tagline">I build things.</h2>
-        <p class="hero-desc">
-            CS grad student at <a href="https://www.northeastern.edu" target="_blank">Northeastern University</a>
-            focused on software engineering and machine learning. Currently building tools that solve real problems and
-            looking for opportunities to grow.
-        </p>
-        <a href="#projects" class="hero-cta">
-            See my work
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-        </a>
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="section-header reveal">
-            <span class="section-number">01.</span>
-            <h2 class="section-title">About Me</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="about-content reveal">
-            <div class="about-text">
-                <p>I'm a software engineer who thrives on understanding how things work under the hood. Whether it's
-                    debugging a tricky stack implementation or designing a full-stack application, I care about writing
-                    code that's clean, efficient, and actually solves problems.</p>
-                <p>Right now I'm pursuing my MS in Computer Science at Northeastern, where I'm deepening my knowledge in
-                    data structures, algorithms, and object-oriented design. Previously, I earned my BS in Information
-                    Systems from San Francisco State University.</p>
-                <p>When I'm not coding, I'm probably at the gym (which inspired one of my projects), exploring new tech,
-                    or prepping for my next hackathon.</p>
-            </div>
-            <div class="about-details">
-                <div class="about-detail-item">
-                    <div class="about-detail-label">Location</div>
-                    <div class="about-detail-value">Boston, MA</div>
-                </div>
-                <div class="about-detail-item">
-                    <div class="about-detail-label">Education</div>
-                    <div class="about-detail-value">MS CS — Northeastern University</div>
-                </div>
-                <div class="about-detail-item">
-                    <div class="about-detail-label">Focus</div>
-                    <div class="about-detail-value">Software Engineering & ML</div>
-                </div>
-                <div class="about-detail-item">
-                    <div class="about-detail-label">Status</div>
-                    <div class="about-detail-value" style="color: var(--accent);">Open to internships</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-        <div class="section-header reveal">
-            <span class="section-number">02.</span>
-            <h2 class="section-title">Projects</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card reveal">
-                <div class="project-top">
-                    <svg class="project-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 20V10"></path>
-                        <path d="M12 20V4"></path>
-                        <path d="M6 20v-6"></path>
+    <main id="main-content">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-orb"></div>
+            <p class="hero-greeting">hey, i'm</p>
+            <h1 class="hero-name">Tenzin Thoesam Shrestha.</h1>
+            <h2 class="hero-tagline">MS CS @ Northeastern | Full-stack + ML Engineer</h2>
+            <p class="hero-desc">
+                I build practical software with clean architecture and measurable outcomes. I'm currently seeking
+                Summer/Fall 2026 software engineering internship opportunities.
+            </p>
+            <div class="hero-actions">
+                <a href="#projects" class="hero-cta">
+                    See my work
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <polyline points="19 12 12 19 5 12"></polyline>
                     </svg>
-                    <div class="project-links">
-                        <a href="https://github.com/10thoesam/neu-gym-tracker" aria-label="GitHub"><svg width="20"
-                                height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path
-                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                </path>
-                            </svg></a>
-                        <a href="https://neu-gym-tracker.onrender.com/" aria-label="External link"><svg width="20"
-                                height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg></a>
+                </a>
+                <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="hero-cta hero-cta-secondary">
+                    Download resume
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                </a>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="section-header reveal">
+                <span class="section-number">01.</span>
+                <h2 class="section-title">About Me</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content reveal">
+                <div class="about-text">
+                    <p>I'm a software engineer who thrives on understanding how things work under the hood. Whether it's
+                        debugging a tricky stack implementation or designing a full-stack application, I care about
+                        writing
+                        code that's clean, efficient, and actually solves problems.</p>
+                    <p>Right now I'm pursuing my MS in Computer Science at Northeastern, where I'm deepening my
+                        knowledge in
+                        data structures, algorithms, and object-oriented design. Previously, I earned my BS in
+                        Information
+                        Systems from San Francisco State University.</p>
+                    <p>When I'm not coding, I'm probably at the gym (which inspired one of my projects), exploring new
+                        tech,
+                        or prepping for my next hackathon.</p>
+                </div>
+                <div class="about-details">
+                    <div class="about-detail-item">
+                        <div class="about-detail-label">Location</div>
+                        <div class="about-detail-value">Boston, MA</div>
+                    </div>
+                    <div class="about-detail-item">
+                        <div class="about-detail-label">Education</div>
+                        <div class="about-detail-value">MS CS — Northeastern University</div>
+                    </div>
+                    <div class="about-detail-item">
+                        <div class="about-detail-label">Focus</div>
+                        <div class="about-detail-value">Software Engineering & ML</div>
+                    </div>
+                    <div class="about-detail-item">
+                        <div class="about-detail-label">Status</div>
+                        <div class="about-detail-value" style="color: var(--accent);">Open to internships</div>
                     </div>
                 </div>
-                <h3 class="project-name">NEU Gym Tracker</h3>
-                <p class="project-desc">Real-time occupancy tracker for Northeastern's gym. Scrapes live data, stores
-                    historical trends, and displays optimal workout times through a clean dashboard.</p>
-                <div class="project-tech">
-                    <span>Python</span><span>Flask</span><span>PostgreSQL</span><span>APScheduler</span><span>React</span>
-                </div>
             </div>
-            <div class="project-card reveal">
-                <div class="project-top">
-                    <svg class="project-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                        <line x1="8" y1="21" x2="16" y2="21"></line>
-                        <line x1="12" y1="17" x2="12" y2="21"></line>
-                    </svg>
-                    <div class="project-links">
-                        <a href="#" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.5">
-                                <path
-                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                </path>
-                            </svg></a>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="section-header reveal">
+                <span class="section-number">02.</span>
+                <h2 class="section-title">Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid">
+                <article class="project-card reveal">
+                    <div class="project-thumb">
+                        <img src="assets/project-gym-tracker.svg" alt="Preview of the NEU Gym Tracker dashboard"
+                            loading="lazy" decoding="async" width="1200" height="750">
+                    </div>
+                    <div class="project-top">
+                        <svg class="project-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 20V10"></path>
+                            <path d="M12 20V4"></path>
+                            <path d="M6 20v-6"></path>
+                        </svg>
+                        <div class="project-links">
+                            <a href="https://github.com/10thoesam/neu-gym-tracker" target="_blank"
+                                rel="noopener noreferrer" aria-label="GitHub"><svg width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
+                                </svg></a>
+                            <a href="https://neu-gym-tracker.onrender.com/" target="_blank" rel="noopener noreferrer"
+                                aria-label="External link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg></a>
+                        </div>
+                    </div>
+                    <h3 class="project-name">NEU Gym Tracker</h3>
+                    <p class="project-desc">Real-time occupancy tracker for Northeastern's gym. Scrapes live data,
+                        stores
+                        historical trends, and displays optimal workout times through a clean dashboard.</p>
+                    <div class="project-tech">
+                        <span>Python</span><span>Flask</span><span>PostgreSQL</span><span>APScheduler</span><span>React</span>
+                    </div>
+                </article>
+                <article class="project-card reveal">
+                    <div class="project-thumb">
+                        <img src="assets/project-memory-match.svg" alt="Preview of the Memory Match Game board"
+                            loading="lazy" decoding="async" width="1200" height="750">
+                    </div>
+                    <div class="project-top">
+                        <svg class="project-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                        <div class="project-links">
+                            <a href="https://github.com/10thoesam" target="_blank" rel="noopener noreferrer"
+                                aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.5">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
+                                </svg></a>
+                        </div>
+                    </div>
+                    <h3 class="project-name">Memory Match Game</h3>
+                    <p class="project-desc">Interactive card-matching game built with Python's Turtle graphics. Features
+                        animated card flips, score tracking, and multiple difficulty levels.</p>
+                    <div class="project-tech">
+                        <span>Python</span><span>Turtle</span><span>OOP</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="section-header reveal">
+                <span class="section-number">03.</span>
+                <h2 class="section-title">Skills & Tech</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category reveal">
+                    <div class="skill-category-name">Languages</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span><span class="skill-tag">Java</span><span
+                            class="skill-tag">C</span><span class="skill-tag">JavaScript</span><span
+                            class="skill-tag">SQL</span><span class="skill-tag">HTML/CSS</span>
                     </div>
                 </div>
-                <h3 class="project-name">Memory Match Game</h3>
-                <p class="project-desc">Interactive card-matching game built with Python's Turtle graphics. Features
-                    animated card flips, score tracking, and multiple difficulty levels.</p>
-                <div class="project-tech">
-                    <span>Python</span><span>Turtle</span><span>OOP</span>
+                <div class="skill-category reveal">
+                    <div class="skill-category-name">Frameworks & Tools</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React</span><span class="skill-tag">Flask</span><span
+                            class="skill-tag">Node.js</span><span class="skill-tag">Git</span><span
+                            class="skill-tag">PostgreSQL</span><span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <div class="skill-category-name">Concepts</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Data Structures</span><span class="skill-tag">Algorithms</span><span
+                            class="skill-tag">OOP</span><span class="skill-tag">System Design</span><span
+                            class="skill-tag">Machine Learning</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <div class="skill-category-name">Currently Learning</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Next.js</span><span class="skill-tag">TypeScript</span><span
+                            class="skill-tag">Docker</span><span class="skill-tag">AWS</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SKILLS -->
-    <section id="skills">
-        <div class="section-header reveal">
-            <span class="section-number">03.</span>
-            <h2 class="section-title">Skills & Tech</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-category reveal">
-                <div class="skill-category-name">Languages</div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span><span class="skill-tag">Java</span><span
-                        class="skill-tag">C</span><span class="skill-tag">JavaScript</span><span
-                        class="skill-tag">SQL</span><span class="skill-tag">HTML/CSS</span>
+        <!-- EDUCATION -->
+        <section id="education">
+            <div class="section-header reveal">
+                <span class="section-number">04.</span>
+                <h2 class="section-title">Education</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="education-list">
+                <div class="education-item reveal">
+                    <div class="education-date">2025 — Present</div>
+                    <div>
+                        <div class="education-role">MS in Computer Science</div>
+                        <div class="education-company">Northeastern University</div>
+                        <div class="education-desc">Coursework in data structures & algorithms, discrete structures, and
+                            object-oriented design. Building full-stack projects and actively contributing to the
+                            developer
+                            community.</div>
+                    </div>
+                </div>
+                <div class="education-item reveal">
+                    <div class="education-date">2021 — 2024</div>
+                    <div>
+                        <div class="education-role">BS in Information Systems</div>
+                        <div class="education-company">San Francisco State University</div>
+                        <div class="education-desc">Developed a strong foundation in systems thinking, database
+                            management,
+                            and software development practices.</div>
+                    </div>
                 </div>
             </div>
-            <div class="skill-category reveal">
-                <div class="skill-category-name">Frameworks & Tools</div>
-                <div class="skill-tags">
-                    <span class="skill-tag">React</span><span class="skill-tag">Flask</span><span
-                        class="skill-tag">Node.js</span><span class="skill-tag">Git</span><span
-                        class="skill-tag">PostgreSQL</span><span class="skill-tag">REST APIs</span>
-                </div>
-            </div>
-            <div class="skill-category reveal">
-                <div class="skill-category-name">Concepts</div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Data Structures</span><span class="skill-tag">Algorithms</span><span
-                        class="skill-tag">OOP</span><span class="skill-tag">System Design</span><span
-                        class="skill-tag">Machine Learning</span>
-                </div>
-            </div>
-            <div class="skill-category reveal">
-                <div class="skill-category-name">Currently Learning</div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Next.js</span><span class="skill-tag">TypeScript</span><span
-                        class="skill-tag">Docker</span><span class="skill-tag">AWS</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- EDUCATION -->
-    <section id="education">
-        <div class="section-header reveal">
-            <span class="section-number">04.</span>
-            <h2 class="section-title">Education</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="education-list">
-            <div class="education-item reveal">
-                <div class="education-date">2025 — Present</div>
-                <div>
-                    <div class="education-role">MS in Computer Science</div>
-                    <div class="education-company">Northeastern University</div>
-                    <div class="education-desc">Coursework in data structures & algorithms, discrete structures, and
-                        object-oriented design. Building full-stack projects and actively contributing to the developer
-                        community.</div>
+        <!-- CONTACT -->
+        <section id="contact" class="contact-section">
+            <div class="reveal">
+                <span class="section-number" style="display:block;margin-bottom:1rem;">05.</span>
+                <h2 class="contact-heading">Let's Connect</h2>
+                <p class="contact-text">I'm currently looking for software engineering and ML internship opportunities.
+                    Whether you have a question, an opportunity, or just want to chat — my inbox is open.</p>
+                <button id="copyEmailBtn" type="button" class="contact-btn">
+                    Say hello
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+                <div class="contact-socials">
+                    <a href="https://github.com/10thoesam" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg></a>
+                    <a href="https://linkedin.com/in/thoesam" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg></a>
+                    <button type="button" class="contact-social-copy" aria-label="Copy email address"><svg width="22"
+                            height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg></button>
                 </div>
             </div>
-            <div class="education-item reveal">
-                <div class="education-date">2021 — 2024</div>
-                <div>
-                    <div class="education-role">BS in Information Systems</div>
-                    <div class="education-company">San Francisco State University</div>
-                    <div class="education-desc">Developed a strong foundation in systems thinking, database management,
-                        and software development practices.</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-        <div class="reveal">
-            <span class="section-number" style="display:block;margin-bottom:1rem;">05.</span>
-            <h2 class="contact-heading">Let's Connect</h2>
-            <p class="contact-text">I'm currently looking for software engineering and ML internship opportunities.
-                Whether you have a question, an opportunity, or just want to chat — my inbox is open.</p>
-            <button onclick="copyEmail(this)" class="contact-btn">
-                Say hello
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-            </button>
-            <div class="contact-socials">
-                <a href="https://github.com/10thoesam" target="_blank" aria-label="GitHub"><svg width="22" height="22"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path
-                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                        </path>
-                    </svg></a>
-                <a href="https://linkedin.com/in/thoesam" target="_blank" aria-label="LinkedIn"><svg width="22"
-                        height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg></a>
-                <a href="javascript:void(0)" onclick="copyEmail(document.querySelector('.contact-btn'))"
-                    aria-label="Email"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.5">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg></a>
-            </div>
-        </div>
-    </section>
+    <div id="copyToast" class="copy-toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <footer>
-        <p>Designed & Built by <a href="#">Tenzin Thoesam Shrestha</a></p>
+        <p>Designed & Built by <a href="#top">Tenzin Thoesam Shrestha</a></p>
     </footer>
 
     <script>
@@ -1069,8 +1275,57 @@
 
         const navToggle = document.getElementById('navToggle');
         const navLinks = document.getElementById('navLinks');
-        navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+        const sectionLinks = navLinks.querySelectorAll('a[href^="#"]');
+        const sections = document.querySelectorAll('main section[id]');
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        const copyEmailTriggers = document.querySelectorAll('.contact-social-copy');
+        const copyToast = document.getElementById('copyToast');
+        let toastTimer = null;
+
+        function setMenu(open) {
+            navLinks.classList.toggle('open', open);
+            navToggle.setAttribute('aria-expanded', String(open));
+        }
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.contains('open');
+            setMenu(!isOpen);
+        });
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') setMenu(false);
+        });
+
+        function setActiveNav(id) {
+            sectionLinks.forEach((link) => {
+                const target = link.getAttribute('href') === `#${id}`;
+                link.classList.toggle('active', target);
+                if (target) {
+                    link.setAttribute('aria-current', 'location');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        }
+
+        function showToast(message) {
+            if (!copyToast) return;
+            copyToast.textContent = message;
+            copyToast.classList.add('show');
+            if (toastTimer) clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                copyToast.classList.remove('show');
+            }, 1800);
+        }
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveNav(entry.target.id);
+                }
+            });
+        }, { threshold: 0.35, rootMargin: '-20% 0px -50% 0px' });
+        sections.forEach((section) => sectionObserver.observe(section));
 
         const reveals = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
@@ -1085,11 +1340,19 @@
 
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return;
+                const t = document.querySelector(href);
+                if (!t) return;
                 e.preventDefault();
-                const t = document.querySelector(this.getAttribute('href'));
-                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const navOffset = nav.offsetHeight + 12;
+                const targetTop = t.getBoundingClientRect().top + window.pageYOffset - navOffset;
+                window.scrollTo({ top: targetTop, behavior: 'smooth' });
             });
         });
+
+        copyEmailBtn.addEventListener('click', () => copyEmail(copyEmailBtn));
+        copyEmailTriggers.forEach((btn) => btn.addEventListener('click', () => copyEmail(copyEmailBtn)));
 
         function copyEmail(btn) {
             navigator.clipboard.writeText('thoesamm@gmail.com').then(() => {
@@ -1097,13 +1360,20 @@
                 btn.innerHTML = 'Copied! ✓';
                 btn.style.borderColor = '#5ad8b5';
                 btn.style.background = 'rgba(90, 216, 181, 0.06)';
+                showToast('Email copied to clipboard.');
                 setTimeout(() => {
                     btn.innerHTML = original;
                     btn.style.borderColor = '';
                     btn.style.background = '';
                 }, 2000);
+            }).catch(() => {
+                showToast('Clipboard blocked. Opening your email app.');
+                window.location.href = 'mailto:thoesamm@gmail.com';
             });
         }
+
+        const initialSection = window.location.hash ? window.location.hash.slice(1) : 'about';
+        setActiveNav(document.getElementById(initialSection) ? initialSection : 'about');
     </script>
 </body>
 
